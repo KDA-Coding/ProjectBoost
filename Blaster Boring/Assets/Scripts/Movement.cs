@@ -56,8 +56,11 @@ public class Movement : MonoBehaviour
 
     private void ApplyRotation(float rotationThisFrame)
     {
+
+        rocketRB.freezeRotation = true; //Freeze Rotation to manually rotate below
+
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
+
+        rocketRB.freezeRotation = false; //Unfreeze Rotation to re-allow physics interactions
     }
 }
-
-    
