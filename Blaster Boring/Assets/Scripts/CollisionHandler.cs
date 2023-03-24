@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -18,9 +19,15 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("We collided with the Finish Landing Pad.");
                 break;
             default:
-                Debug.Log("We've collided with something else.");
+                Debug.Log("We've collided with something else. Reloading Level");
+                ReloadLevel();
                 break;
         }
+
+    }
+
+    void ReloadLevel()
+    {
 
     }
 
