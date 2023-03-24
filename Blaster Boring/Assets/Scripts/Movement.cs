@@ -13,10 +13,14 @@ public class Movement : MonoBehaviour
     //Store a "tuner" for Rotation speed
     [SerializeField] float rotThrust = 50.0f;
 
+    //Store the player AudioSource for SFX handling
+    AudioSource rocketAudio;
+
     // Start is called before the first frame update
     void Start()
     {
         rocketRB = GetComponent<Rigidbody>();
+        rocketAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,9 +34,18 @@ public class Movement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            //Debug.Log("Pressed Spacebar. Thrust Active");
+            //Add Force to Rocket while Space is held down
+            //and play Thruster Sound
+            if (!rocketAudio.isPlaying)
+            {
+                rocketAudio.Play();
+            }
 
             rocketRB.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+        }
+        else
+        {
+            rocketAudio.Stop();
         }
     }
 
