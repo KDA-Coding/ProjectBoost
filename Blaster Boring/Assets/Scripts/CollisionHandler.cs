@@ -16,19 +16,37 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("We collided with a Fuel Source.");
                 break;
             case "Finish":
-                Debug.Log("We collided with the Finish Landing Pad.");
+                LoadNextLevel();
                 break;
             default:
                 Debug.Log("We've collided with something else. Reloading Level");
-                ReloadLevel();
+                RestartLevel();
                 break;
         }
 
     }
 
-    void ReloadLevel()
+    void RestartLevel()
     {
-
+        //Use GetActiveScene().buildIndex to store current scene build index
+        //Assign to currentSceneIndex and pass to .LoadScene as parameter
+        //No matter which level we're on, the Reloader reloads the current
+        //active level.
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 
+    void LoadNextLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+
+        SceneManager.LoadScene(nextSceneIndex);
+    }
 }
