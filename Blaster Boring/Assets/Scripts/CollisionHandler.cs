@@ -4,26 +4,38 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
 
+    [SerializeField] float delayInSec = 3.0f;
+
     void OnCollisionEnter(Collision collision)
     {
 
         switch (collision.gameObject.tag)
         {
             case "Friendly":
-                Debug.Log("We collided with a Friendly Launch Pad.");
-                break;
-            case "Fuel":
-                Debug.Log("We collided with a Fuel Source.");
+                Debug.Log("We collided with a Friendly Object.");
                 break;
             case "Finish":
-                LoadNextLevel();
+                StartSuccessSequence();
                 break;
             default:
-                Debug.Log("We've collided with something else. Reloading Level");
-                RestartLevel();
+                StartCrashSequence();
                 break;
         }
 
+    }
+
+    void LoadNextLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+
+        SceneManager.LoadScene(nextSceneIndex);
     }
 
     void RestartLevel()
@@ -36,17 +48,29 @@ public class CollisionHandler : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
     }
 
-    void LoadNextLevel()
+    void StartSuccessSequence()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        int nextSceneIndex = currentSceneIndex + 1;
+        //todo add Landing SFX
+        //todo add Particle Effect/s on landing
 
-        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings)
-        {
-            nextSceneIndex = 0;
-        }
+        Movement moveScript = GetComponent<Movement>();
+        moveScript.enabled = false;
 
-        SceneManager.LoadScene(nextSceneIndex);
+        Invoke("LoadNextLevel", delayInSec);
     }
+
+
+    void StartCrashSequence()
+    {
+
+        //todo add Crash SFX
+        //todo add Particle Effect/s on crash
+
+        Movement moveScript = GetComponent<Movement>();
+        moveScript.enabled = false;
+
+        Invoke("RestartLevel", delayInSec);
+    }
+
 }
