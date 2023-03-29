@@ -14,6 +14,7 @@ public class CollisionHandler : MonoBehaviour
 
     AudioSource collisionAudio;
 
+    bool isTransitioning = false;
 
     void Start()
     {
@@ -22,11 +23,12 @@ public class CollisionHandler : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if(isTransitioning) { return; }
 
         switch (collision.gameObject.tag)
         {
             case "Friendly":
-                Debug.Log("We collided with a Friendly Object.");
+                Debug.Log("Colliding with Friendly Object");
                 break;
             case "Finish":
                 StartSuccessSequence();
@@ -64,8 +66,10 @@ public class CollisionHandler : MonoBehaviour
 
     void StartSuccessSequence()
     {
+        isTransitioning = true;
 
-        //todo add Landing SFX
+        collisionAudio.Stop();
+
         collisionAudio.PlayOneShot(successClip, volumeControl);
 
         //todo add Particle Effect/s on landing
@@ -79,9 +83,12 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {
+        isTransitioning = true;
 
-        //todo add Crash SFX
+        collisionAudio.Stop();
+
         collisionAudio.PlayOneShot(explosionClip, volumeControl);
+        
         //todo add Particle Effect/s on crash
 
         Movement moveScript = GetComponent<Movement>();
