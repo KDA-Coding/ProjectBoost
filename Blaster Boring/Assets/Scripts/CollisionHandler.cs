@@ -7,6 +7,9 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] AudioClip successClip;
     [SerializeField] AudioClip explosionClip;
 
+    [SerializeField] ParticleSystem winParticle;
+    [SerializeField] ParticleSystem explodeParticle;
+
     [SerializeField] float volumeControl = 0.6f;
 
     [SerializeField] float delayInSec = 3.0f;
@@ -72,7 +75,8 @@ public class CollisionHandler : MonoBehaviour
 
         collisionAudio.PlayOneShot(successClip, volumeControl);
 
-        //todo add Particle Effect/s on landing
+        winParticle.Play();
+
 
         Movement moveScript = GetComponent<Movement>();
         moveScript.enabled = false;
@@ -88,8 +92,8 @@ public class CollisionHandler : MonoBehaviour
         collisionAudio.Stop();
 
         collisionAudio.PlayOneShot(explosionClip, volumeControl);
-        
-        //todo add Particle Effect/s on crash
+
+        explodeParticle.Play();
 
         Movement moveScript = GetComponent<Movement>();
         moveScript.enabled = false;
