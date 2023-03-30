@@ -24,6 +24,11 @@ public class Movement : MonoBehaviour
     //Store the player AudioSource for SFX handling
     AudioSource rocketAudio;
 
+    //Particles for movement Thrusters
+    [SerializeField] ParticleSystem mainThrusterParticles;
+    [SerializeField] ParticleSystem leftThrusterParticles;
+    [SerializeField] ParticleSystem rightThrusterParticles;
+
     //Store the Rigidbody for Physics based manipulation
     Rigidbody rocketRB;
 
@@ -45,37 +50,83 @@ public class Movement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            //Add Force to Rocket while Space is held down
-            //and play Thruster Sound
-            if (!rocketAudio.isPlaying)
-            {
-                rocketAudio.PlayOneShot(mainEngine);
-            }
-
-            rocketRB.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+            StartThrusting();
         }
         else
         {
-            rocketAudio.Stop();
+            StopThrusting();
         }
+    }
+
+    void StartThrusting()
+    {
+        //Add Force to Rocket while Space is held down
+        //and play Thruster Sound
+        if (!rocketAudio.isPlaying)
+        {
+            rocketAudio.PlayOneShot(mainEngine);
+        }
+
+        rocketRB.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+
+        if (!mainThrusterParticles.isPlaying)
+        {
+            mainThrusterParticles.Play();
+        }
+    }
+
+    void StopThrusting()
+    {
+        rocketAudio.Stop();
+        mainThrusterParticles.Stop();
     }
 
     void ProcessRotation()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            //Debug.Log("Pressed A. Rotating Counter-Clockwise around Z");
-
-            ApplyRotation(rotThrust);
+            RotateLeft();
 
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            //Debug.Log("Pressed D. Rotating Clockwise around Z");
-
-            ApplyRotation(-rotThrust);
+            RotateRight();
 
         }
+        else
+        {
+            StopRotating();
+        }
+    }
+
+    void RotateLeft()
+    {
+        //Debug.Log("Pressed A. Rotating Counter-Clockwise around Z");
+
+        ApplyRotation(rotThrust);
+
+        if (!rightThrusterParticles.isPlaying)
+        {
+            rightThrusterParticles.Play();
+        }
+    }
+
+    void RotateRight()
+    {
+        //Debug.Log("Pressed D. Rotating Clockwise around Z");
+
+        ApplyRotation(-rotThrust);
+
+        if (!leftThrusterParticles.isPlaying)
+        {
+            leftThrusterParticles.Play();
+        }
+    }
+
+    private void StopRotating()
+    {
+        leftThrusterParticles.Stop();
+        rightThrusterParticles.Stop();
     }
 
     private void ApplyRotation(float rotationThisFrame)

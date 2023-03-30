@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,16 +18,39 @@ public class CollisionHandler : MonoBehaviour
 
     AudioSource collisionAudio;
 
+    Movement moveScript;
+
     bool isTransitioning = false;
+    bool collisionDisabled = false;
 
     void Start()
     {
-        collisionAudio = GetComponent<AudioSource>();   
+        collisionAudio = GetComponent<AudioSource>();
+        moveScript = GetComponent<Movement>();
+    }
+
+    void Update()
+    {
+        RespondToDebugKeys();    
+    }
+
+    void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            //Toggle Collision Bool
+            collisionDisabled = !collisionDisabled;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if(isTransitioning) { return; }
+        if(isTransitioning || collisionDisabled) { return; }
 
         switch (collision.gameObject.tag)
         {
@@ -77,8 +101,6 @@ public class CollisionHandler : MonoBehaviour
 
         winParticle.Play();
 
-
-        Movement moveScript = GetComponent<Movement>();
         moveScript.enabled = false;
 
         Invoke("LoadNextLevel", delayInSec);
@@ -95,7 +117,6 @@ public class CollisionHandler : MonoBehaviour
 
         explodeParticle.Play();
 
-        Movement moveScript = GetComponent<Movement>();
         moveScript.enabled = false;
 
         Invoke("RestartLevel", delayInSec);
