@@ -9,6 +9,8 @@ public class FireProjectile : MonoBehaviour
     [SerializeField] Transform projSpawnL;
     [SerializeField] Transform projSpawnR;
 
+    [SerializeField] float delayBetweenShots = 0.5f;
+
     bool canShoot = true;
 
     void Update()
@@ -19,9 +21,7 @@ public class FireProjectile : MonoBehaviour
             spawnProj();
             canShoot = false;
 
-
-            Invoke("setShootTrue", 0.7f);
-
+            Invoke("setShootTrue", delayBetweenShots);
         }    
     }
 

@@ -8,37 +8,49 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] ParticleSystem blasterParticle;
 
+    [SerializeField] Light blasterLight;
+
+    [SerializeField] MeshRenderer blasterMR;
+
+    [SerializeField] float timeToDestroy = 2f;
+
+    bool hasCollided = false;
+
     void Update()
     {
-        MoveProjectile();
+            MoveProjectile();
     }
 
     void MoveProjectile()
     {
-        transform.position += transform.up * projSpeed * Time.deltaTime;
+        if(!hasCollided)
+        {
+            transform.position += transform.up * projSpeed * Time.deltaTime;
+        }
+        else if (hasCollided)
+        {
+            return;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("Collided with terrain.");
-
+        hasCollided = true;
         DestructionParticle();
-
-        Destroy(gameObject);
     }
 
     void DestructionParticle()
     {
-        Instantiate(blasterParticle, transform.position, transform.rotation);
-
+        blasterMR.enabled = false;
+        blasterLight.enabled = false;
         blasterParticle.Play();
 
-        Invoke("DestroyDestructionParticle", 1.0f);
+        Invoke("DestroyBolt", timeToDestroy);
     }
 
-    void DestroyDestructionParticle()
+    void DestroyBolt()
     {
-        Destroy(blasterParticle);
+        Destroy(gameObject);
     }
-
 }
