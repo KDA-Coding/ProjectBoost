@@ -5341,8 +5341,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   proj: {fileID: 4109881660850319663, guid: 6391ce37ccfc245c6a4db8ca3110f498, type: 3}
+  blasterClip: {fileID: 8300000, guid: 54eb8e7114dd34d89b1116ade11c838d, type: 3}
+  volumeControl: 1
   projSpawnL: {fileID: 3590770210797607956}
   projSpawnR: {fileID: 4457813058972014936}
+  delayBetweenShots: 0.5
 --- !u!1 &4162503165490342512
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,12 +15,10 @@ public class FireProjectile : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && canShoot)
+        if (Input.GetKeyDown(KeyCode.Space) && canShoot)
         {
-
             spawnProj();
             canShoot = false;
-
             Invoke("setShootTrue", delayBetweenShots);
         }    
     }
@@ -35,5 +33,4 @@ public class FireProjectile : MonoBehaviour
         Instantiate(proj, projSpawnL.position, projSpawnL.rotation);
         Instantiate(proj, projSpawnR.position, projSpawnR.rotation);
     }
-
 }

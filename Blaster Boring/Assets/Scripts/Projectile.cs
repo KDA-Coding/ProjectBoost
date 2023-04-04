@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -12,9 +10,28 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] MeshRenderer blasterMR;
 
-    [SerializeField] float timeToDestroy = 2f;
+    AudioSource boltSource;
+
+    [SerializeField] AudioClip blasterClip;
+    [SerializeField] AudioClip impactClip;
+
+    [SerializeField][Range(0, 1)] float volumeControl = 0.6f;
+
+    [SerializeField] float timeToDestroy = 1f;
+
+    [SerializeField] float destructDelay = 3f;
 
     bool hasCollided = false;
+
+
+    void Start()
+    {
+        boltSource = GetComponent<AudioSource>();
+
+        boltSource.PlayOneShot(blasterClip, volumeControl);
+
+         Destroy(gameObject, destructDelay);
+    }
 
     void Update()
     {
@@ -35,9 +52,11 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        boltSource.Stop();
         //Debug.Log("Collided with terrain.");
         hasCollided = true;
         DestructionParticle();
+        boltSource.PlayOneShot(impactClip, volumeControl);
     }
 
     void DestructionParticle()

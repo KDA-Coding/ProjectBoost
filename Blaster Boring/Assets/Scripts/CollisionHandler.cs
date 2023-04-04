@@ -11,7 +11,7 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] ParticleSystem winParticle;
     [SerializeField] ParticleSystem explodeParticle;
 
-    [SerializeField] float volumeControl = 0.6f;
+    [SerializeField][Range(0,1)] float volumeControl = 0.6f;
 
     [SerializeField] float delayInSec = 3.0f;
 
