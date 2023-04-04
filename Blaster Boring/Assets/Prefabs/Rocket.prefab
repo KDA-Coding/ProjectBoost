@@ -5127,6 +5127,7 @@ GameObject:
   - component: {fileID: 1459165371}
   - component: {fileID: 3845119892011279676}
   - component: {fileID: 6427069279631651427}
+  - component: {fileID: 3455808952418748655}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -5166,6 +5167,8 @@ Transform:
   - {fileID: 8129118622185500031}
   - {fileID: 8914375981891046377}
   - {fileID: 8383546627018594039}
+  - {fileID: 4457813058972014936}
+  - {fileID: 3590770210797607956}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5325,6 +5328,52 @@ MonoBehaviour:
   explodeParticle: {fileID: 3189546636824973609}
   volumeControl: 0.6
   delayInSec: 3
+--- !u!114 &3455808952418748655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845119891252706702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efbd80b02b7eb4816ae27a3a9cc8a7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  proj: {fileID: 4109881660850319663, guid: 6391ce37ccfc245c6a4db8ca3110f498, type: 3}
+  projSpawnL: {fileID: 3590770210797607956}
+  projSpawnR: {fileID: 4457813058972014936}
+--- !u!1 &4162503165490342512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3590770210797607956}
+  m_Layer: 0
+  m_Name: ProjSpawnL
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3590770210797607956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4162503165490342512}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.6, y: 1.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3845119891252706690}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4234250812407983054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5336,7 +5385,6 @@ GameObject:
   - component: {fileID: 6761959399045534360}
   - component: {fileID: 2305024860645092623}
   - component: {fileID: 1617042546379726372}
-  - component: {fileID: 1449454891842580882}
   m_Layer: 0
   m_Name: BlasterL
   m_TagString: Untagged
@@ -5409,20 +5457,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1449454891842580882
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4234250812407983054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4622676724073014303
 GameObject:
   m_ObjectHideFlags: 0
@@ -20778,7 +20812,6 @@ GameObject:
   - component: {fileID: 7408317292986014526}
   - component: {fileID: 5024414782102200207}
   - component: {fileID: 2932605905701225163}
-  - component: {fileID: 923705851130159009}
   m_Layer: 0
   m_Name: BlasterR
   m_TagString: Untagged
@@ -20851,20 +20884,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &923705851130159009
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8088564988738587038}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8125082585543771011
 GameObject:
   m_ObjectHideFlags: 0
@@ -25787,3 +25806,34 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &8957996968056782775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4457813058972014936}
+  m_Layer: 0
+  m_Name: ProjSpawnR
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4457813058972014936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8957996968056782775}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.6, y: 1.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3845119891252706690}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

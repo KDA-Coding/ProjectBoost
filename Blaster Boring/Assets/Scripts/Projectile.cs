@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] Rigidbody projRB;
-    [SerializeField] float projSpeed = 300;
+    [SerializeField] float projSpeed = 10;
 
-
-    void Start()
-    {
-        projRB = GetComponent<Rigidbody>();    
-    }
+    [SerializeField] ParticleSystem blasterParticle;
 
     void Update()
     {
-        projRB.AddForce(gameObject.transform.up * projSpeed * Time.deltaTime, ForceMode.VelocityChange);    
+        MoveProjectile();
+    }
+
+    void MoveProjectile()
+    {
+        transform.position += transform.up * projSpeed * Time.deltaTime;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-            
+        //Debug.Log("Collided with terrain.");
+
+        DestructionParticle();
+
+        Destroy(gameObject);
     }
+
+    void DestructionParticle()
+    {
+        Instantiate(blasterParticle, transform.position, transform.rotation);
+
+        blasterParticle.Play();
+
+        Invoke("DestroyDestructionParticle", 1.0f);
+    }
+
+    void DestroyDestructionParticle()
+    {
+        Destroy(blasterParticle);
+    }
+
 }
