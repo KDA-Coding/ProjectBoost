@@ -5193,7 +5193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainThrust: 90
-  rotThrust: 70
+  rotThrust: 90
   mainEngine: {fileID: 8300000, guid: efae656026a99415b881ad98d2bca05c, type: 3}
   mainThrusterParticles: {fileID: 4753391890596104411}
   leftThrusterParticles: {fileID: 8250076001005348663}
@@ -5341,8 +5341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   proj: {fileID: 4109881660850319663, guid: 6391ce37ccfc245c6a4db8ca3110f498, type: 3}
-  blasterClip: {fileID: 8300000, guid: 54eb8e7114dd34d89b1116ade11c838d, type: 3}
-  volumeControl: 1
   projSpawnL: {fileID: 3590770210797607956}
   projSpawnR: {fileID: 4457813058972014936}
   delayBetweenShots: 0.5
