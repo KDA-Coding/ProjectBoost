@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SideAndUp.unity
     guid: c18b642e49063402a8aba1bf3b066d4b
+  - enabled: 1
+    path: Assets/Scenes/Excavators.unity
+    guid: 713e6ccb4f5f2478ca2828aaa252b1c8
   m_configObjects: {}
