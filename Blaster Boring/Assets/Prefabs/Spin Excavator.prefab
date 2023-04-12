@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xRot: 0
-  yRot: -1
+  yRot: -0.5
   zRot: 0
 --- !u!1 &5821508455892776472
 GameObject:
