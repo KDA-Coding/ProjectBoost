@@ -11,16 +11,30 @@ public class FireProjectile : MonoBehaviour
 
     [SerializeField] float delayBetweenShots = 0.5f;
 
+    FireProjectile fireProjScript;
+    CollisionHandler colHandlerScript;
+
     bool canShoot = true;
+
+
+    void Start()
+    {
+        fireProjScript = GetComponent<FireProjectile>();
+        colHandlerScript = GetComponent<CollisionHandler>();
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canShoot)
+        if (Input.GetKeyDown(KeyCode.Space) && canShoot && !colHandlerScript.isTransitioning)
         {
             spawnProj();
             canShoot = false;
             Invoke("setShootTrue", delayBetweenShots);
-        }    
+        }
+        else if (colHandlerScript.isTransitioning)
+        {
+            canShoot = false;
+        }
     }
 
     void setShootTrue()

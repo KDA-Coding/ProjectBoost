@@ -20,7 +20,7 @@ public class CollisionHandler : MonoBehaviour
 
     Movement moveScript;
 
-    bool isTransitioning = false;
+    public bool isTransitioning = false;
     bool collisionDisabled = false;
 
     void Start()
@@ -31,7 +31,7 @@ public class CollisionHandler : MonoBehaviour
 
     void Update()
     {
-        RespondToDebugKeys();    
+        //RespondToDebugKeys();    
     }
 
     void RespondToDebugKeys()
