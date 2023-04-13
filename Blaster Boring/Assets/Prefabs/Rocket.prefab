@@ -5128,6 +5128,7 @@ GameObject:
   - component: {fileID: 3845119892011279676}
   - component: {fileID: 6427069279631651427}
   - component: {fileID: 3455808952418748655}
+  - component: {fileID: 5221918775911388426}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -5328,6 +5329,7 @@ MonoBehaviour:
   explodeParticle: {fileID: 3189546636824973609}
   volumeControl: 0.6
   delayInSec: 3
+  isTransitioning: 0
 --- !u!114 &3455808952418748655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5344,6 +5346,18 @@ MonoBehaviour:
   projSpawnL: {fileID: 3590770210797607956}
   projSpawnR: {fileID: 4457813058972014936}
   delayBetweenShots: 0.5
+--- !u!114 &5221918775911388426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845119891252706702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5449cbdd45b149878a64bd4923c507c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4162503165490342512
 GameObject:
   m_ObjectHideFlags: 0
