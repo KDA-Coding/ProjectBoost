@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Under.unity
     guid: 8ee820b4d78bf47ebb8bb1e70e0ae1ca
   - enabled: 1
+    path: Assets/Scenes/WithinTheRails.unity
+    guid: 851e2668b3fab4028b2a942ec98587c4
+  - enabled: 1
     path: Assets/Scenes/BlastRocks.unity
     guid: e08de4c29ed0a48f394fef09c6274724
   - enabled: 1
@@ -23,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Excavators.unity
     guid: 713e6ccb4f5f2478ca2828aaa252b1c8
-  - enabled: 1
-    path: Assets/Scenes/WithinTheRails.unity
-    guid: 851e2668b3fab4028b2a942ec98587c4
   - enabled: 1
     path: Assets/Scenes/VerticalMaze.unity
     guid: 5b77fb97885b84fd2b930a189e65843d

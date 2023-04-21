@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xRot: 0
-  yRot: -0.5
+  yRot: -60
   zRot: 0
 --- !u!1 &201203710
 GameObject:
